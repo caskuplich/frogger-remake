@@ -212,8 +212,9 @@ Game.prototype.showWinnerScreen = function() {
 
 // Handles the keyboard input.
 Game.prototype.handleInput = function(key) {
-  if (this.ended && key === 'enter') {
-    this.reset();
+  if (this.ended) {
+    if (key === 'enter')
+      this.reset();
   } else {
     this.player.handleInput(key);
   }
