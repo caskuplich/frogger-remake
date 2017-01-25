@@ -76,8 +76,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Our player.
-var Player = function(enemies) {
-    this.enemies = enemies;
+var Player = function() {
     Entity.call(this, 71, 73, 'images/char-boy.png');
 };
 
@@ -108,11 +107,11 @@ Player.prototype.reset = function() {
 // Update the player's position to keep the player inside
 // the game level boundaries and checks if she collides with
 // an enemy or wins the game.
-Player.prototype.update = function() {
+Player.prototype.update = function(enemies) {
     if (this.y < 134) {
         // player wins
         this.winner = true;
-    } else if (this.collidesWithAnEnemy()) {
+    } else if (this.collidesWithAnEnemy(enemies)) {
         // player collides with an enemy
         this.reset();
     } else if (this.x < 15) {  // check game level boundaries
@@ -165,8 +164,8 @@ Player.prototype.collidesWith = function(other) {
 };
 
 // Checks if the player collides with some enemy.
-Player.prototype.collidesWithAnEnemy = function() {
-    return this.enemies.some(function(enemy) {
+Player.prototype.collidesWithAnEnemy = function(enemies) {
+    return enemies.some(function(enemy) {
         return this.collidesWith(enemy);
     }, this);
 };
@@ -194,7 +193,7 @@ Player.prototype.showWinnerScreen = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [new Enemy(), new Enemy(), new Enemy()];
-var player = new Player(allEnemies);
+var player = new Player();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
