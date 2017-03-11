@@ -2,9 +2,12 @@
 
 This is a remake written in HTML5 of the classic arcade game Frogger.
 
-## Running the game
+[Play online](https://caskuplich.github.io/frogger-remake/)
 
-Just open the `index.html` file in a browser.
+## Running the game on local machine
+
+Clone this repository and open the `index.html` file in the project root with
+your browser.
 
 ## How to play
 
